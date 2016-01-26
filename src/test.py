@@ -4,6 +4,7 @@ import time
 import os
 import os.path,shutil
 import glob
+import calendar
 def renameIt(strDirector):
     rootDir=strDirector
     for parent,dirnames,filenames in os.walk(rootDir):
@@ -41,6 +42,12 @@ def mkDirAndMovFiles(wantDirName):
         if not os.path.isdir(filename):
             shutil.move(filename,wantDirName+"\\"+filename)  
     return
+def createFilesToTest(path):
+    if(os.path.exists(path)):
+        print path+"exists"
+        c=calendar.Calendar()
+        print type(c.itermonthdates(2015, 12))
+    return
 s=len(sys.argv)
 if s>1:
     #toDir(s[1])
@@ -49,5 +56,5 @@ if s>1:
 else:
     print s
 
-
+createFilesToTest("./")
 
